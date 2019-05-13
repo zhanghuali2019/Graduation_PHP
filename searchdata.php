@@ -11,7 +11,7 @@ if (mysqli_connect_errno() !== 0) {
 }
 
 //查询所有的帖子
-$sql = "SELECT * FROM `post`";
+$sql = "SELECT * FROM `post` order by `id` desc";
 $result = mysqli_query($conn, $sql);
 if(mysqli_errno($conn) !== 0) {
     die(mysqli_error($conn));
@@ -60,7 +60,6 @@ $pops_str=json_encode($arr2);//将数组进行json编码
 
 //将结果返回
 $res = array('success' => true,'all_data' => $all_str, 'latest_data' => $latest_str, 'pops_data' => $pops_str);
-//print_r($res);
 $res_json = json_encode($res);
 exit($res_json);
 
